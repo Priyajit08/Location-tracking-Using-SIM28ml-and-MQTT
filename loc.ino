@@ -1,13 +1,12 @@
 #include "config.h"
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
-/*This sample sketch demonstrates the normal use of a TinyGPS++ (TinyGPSPlus) object.   
-It requires the use of SoftwareSerial, and assumes that you have a 9600-baud serial 
-GPS device hooked up on pins 8(rx) and 9(tx).*/
+
+//GPS device hooked up on pins 8(rx) and 9(tx)
+
 static const int RXPin = 4, TXPin = 5;
 static const uint32_t GPSBaud = 9600;
 
-// The TinyGPS++ object
 TinyGPSPlus gps;
 
 // The serial connection to the GPS device
@@ -28,7 +27,6 @@ void setup()
 void loop()
 {
   io.run();
-  // This sketch displays information every time a new sentence is correctly encoded.
   while (ss.available() > 0)
     if (gps.encode(ss.read()))
       displayInfo();
